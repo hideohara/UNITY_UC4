@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Rigidbody rb;
-    private float moveSpeed = 5;
+    private float moveSpeed = 3;
     public Animator animator;
 
     // Start is called before the first frame update
@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         // âE
         if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -49,6 +50,32 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("WalkFlag", false);
             rb.velocity = new Vector3(0, 0, 0);
+        }
+        */
+
+        // âú
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            //rb.velocity = Vector3.forward * moveSpeed;
+            rb.velocity = transform.forward * moveSpeed;
+            //transform.position += transform.forward* moveSpeed;
+            animator.SetBool("WalkFlag", true);
+            //transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else
+        {
+            animator.SetBool("WalkFlag", false);
+        }
+
+        // âE
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Rotate(0, 1, 0, Space.Self);
+        }
+        // ç∂
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Rotate(0, -1, 0, Space.Self);
         }
 
     }
